@@ -1,0 +1,26 @@
+h1 {
+    margin: auto;
+    text-align: center;
+}
+#sketch-pad {
+    margin: auto;
+}
+
+#grid-container {
+    display: inline-grid;
+    height: auto;
+    width: auto;
+    margin-left: 50%;
+    margin-right:50%;
+    margin-top: 10%;
+}
+
+.box {
+    border: 1px solid rgb(0, 0, 0);
+    width: 10px;
+    height: 10px;
+
+}
+.box:hover {
+    background-color:black;
+}
