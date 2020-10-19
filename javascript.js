@@ -1,5 +1,5 @@
-const container = document.querySelector("#grid-container");
-function makeGrid(number) {
+const container = document.querySelector("#grid-container"); //set container variable
+function makeGrid(number) { //original grid maker--this does not rest the previous grid!
     for (i=0; i<(number*number); i++) {
         container.style.gridTemplateColumns = `repeat(${number}, auto)`;
         const box = document.createElement('div');
@@ -11,18 +11,19 @@ function makeGrid(number) {
     }
 }
 
-function paintBoxes() {
+function paintBoxes() { //This sets up the boxes to turn a color when the cursor moves over them
 let boxArray = document.querySelectorAll(".box");
 boxArray.forEach(function(box) {
     box.addEventListener('mouseover', function() {
-        /*box.style.backgroundColor = "black";*/
-        box.classList.add("box-hovered");
+        let randomColor = getRandomColor();
+        box.style.backgroundColor = randomColor;
+        /*box.classList.add("box-hovered");*/
         /*box.classList.remove("box");*/
     })
 })
 }
 
-function resetGrid(number) {
+function resetGrid(number) { //elimnates the previously built grid, then creates a new one
     let boxArray = document.querySelectorAll(".box");
     boxArray.forEach(function(box) {
         box.remove();
@@ -30,10 +31,32 @@ function resetGrid(number) {
     makeGrid(number);
 }
 
-const button = document.querySelector("button");
+function getRandomColor() {
+    let nOne = Math.floor(Math.random()*256);
+    let nTwo = Math.floor(Math.random()*256);
+    let nThree = Math.floor(Math.random()*256);
+    console.log()
+
+    return `rgb(${nOne}, ${nTwo}, ${nThree})`;
+
+}
+
+
+const button = document.querySelector("button"); //logic for the button
 button.addEventListener('click', function (){
-resetGrid(100);
-paintBoxes();
+let userNumber = prompt("How many boxes per side? Max is 100.", "Enter Number");
+if(userNumber <= 100) {
+    userNumber = Math.round(userNumber); //rounds in case person puts in a non-number
+    resetGrid(userNumber);
+    paintBoxes();
+}
+else {
+    alert(`${userNumber} is too high, the number needs to be less than 100.`);
+}
+
 })
-makeGrid(100);
+
+
+makeGrid(16);
 paintBoxes();
+
