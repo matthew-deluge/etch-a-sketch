@@ -11,4 +11,29 @@ function makeGrid(number) {
     }
 }
 
-makeGrid(16);
+function paintBoxes() {
+let boxArray = document.querySelectorAll(".box");
+boxArray.forEach(function(box) {
+    box.addEventListener('mouseover', function() {
+        /*box.style.backgroundColor = "black";*/
+        box.classList.add("box-hovered");
+        /*box.classList.remove("box");*/
+    })
+})
+}
+
+function resetGrid(number) {
+    let boxArray = document.querySelectorAll(".box");
+    boxArray.forEach(function(box) {
+        box.remove();
+    })
+    makeGrid(number);
+}
+
+const button = document.querySelector("button");
+button.addEventListener('click', function (){
+resetGrid(100);
+paintBoxes();
+})
+makeGrid(100);
+paintBoxes();

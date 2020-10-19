@@ -1,3 +1,16 @@
+:root {
+    --grid-layout: repeat(16, auto);
+    --box-color: rgb(0, 0, 0);
+}
+body {
+    background-color: aquamarine;
+    height: auto;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-self: center;
+}
 h1 {
     margin: auto;
     text-align: center;
@@ -8,19 +21,39 @@ h1 {
 
 #grid-container {
     display: inline-grid;
-    height: auto;
-    width: auto;
-    margin-left: 50%;
-    margin-right:50%;
-    margin-top: 10%;
+    margin-top: 5%;
+    grid-template-columns: var(--grid-layout);
+    border: 5px solid rgb(0,0,100)
 }
 
+.button-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+
+}
+button {
+    align-self: center;
+    text-align: center;
+    align-self: center;
+    margin-top: 1em;
+    height: 30px;
+    width: 75px;
+}
+.button:hover {
+    background-color: cadetblue;
+}
 .box {
     border: 1px solid rgb(0, 0, 0);
     width: 10px;
     height: 10px;
-
+    background-color: white;
 }
-.box:hover {
-    background-color:black;
+.box-hovered {
+    background-color: var(--box-color);
+    border: 1px solid rgb(0, 0, 0);
+    width: 10px;
+    height: 10px;
 }
